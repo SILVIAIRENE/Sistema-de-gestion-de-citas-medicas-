@@ -1,0 +1,488 @@
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import permisosA27c5c from './permisos'
+/**
+* @see \App\Http\Controllers\RolController::index
+ * @see app/Http/Controllers/RolController.php:17
+ * @route '/api/roles'
+ */
+export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index.url(options),
+    method: 'get',
+})
+
+index.definition = {
+    methods: ["get","head"],
+    url: '/api/roles',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\RolController::index
+ * @see app/Http/Controllers/RolController.php:17
+ * @route '/api/roles'
+ */
+index.url = (options?: RouteQueryOptions) => {
+    return index.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\RolController::index
+ * @see app/Http/Controllers/RolController.php:17
+ * @route '/api/roles'
+ */
+index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: index.url(options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\RolController::index
+ * @see app/Http/Controllers/RolController.php:17
+ * @route '/api/roles'
+ */
+index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: index.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\RolController::index
+ * @see app/Http/Controllers/RolController.php:17
+ * @route '/api/roles'
+ */
+    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\RolController::index
+ * @see app/Http/Controllers/RolController.php:17
+ * @route '/api/roles'
+ */
+        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url(options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\RolController::index
+ * @see app/Http/Controllers/RolController.php:17
+ * @route '/api/roles'
+ */
+        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    index.form = indexForm
+/**
+* @see \App\Http\Controllers\PermisoController::permisos
+ * @see app/Http/Controllers/PermisoController.php:16
+ * @route '/api/roles/permisos'
+ */
+export const permisos = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: permisos.url(options),
+    method: 'get',
+})
+
+permisos.definition = {
+    methods: ["get","head"],
+    url: '/api/roles/permisos',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\PermisoController::permisos
+ * @see app/Http/Controllers/PermisoController.php:16
+ * @route '/api/roles/permisos'
+ */
+permisos.url = (options?: RouteQueryOptions) => {
+    return permisos.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\PermisoController::permisos
+ * @see app/Http/Controllers/PermisoController.php:16
+ * @route '/api/roles/permisos'
+ */
+permisos.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: permisos.url(options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\PermisoController::permisos
+ * @see app/Http/Controllers/PermisoController.php:16
+ * @route '/api/roles/permisos'
+ */
+permisos.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: permisos.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\PermisoController::permisos
+ * @see app/Http/Controllers/PermisoController.php:16
+ * @route '/api/roles/permisos'
+ */
+    const permisosForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: permisos.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\PermisoController::permisos
+ * @see app/Http/Controllers/PermisoController.php:16
+ * @route '/api/roles/permisos'
+ */
+        permisosForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: permisos.url(options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\PermisoController::permisos
+ * @see app/Http/Controllers/PermisoController.php:16
+ * @route '/api/roles/permisos'
+ */
+        permisosForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: permisos.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    permisos.form = permisosForm
+/**
+* @see \App\Http\Controllers\RolController::show
+ * @see app/Http/Controllers/RolController.php:31
+ * @route '/api/roles/{id}'
+ */
+export const show = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+
+show.definition = {
+    methods: ["get","head"],
+    url: '/api/roles/{id}',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\RolController::show
+ * @see app/Http/Controllers/RolController.php:31
+ * @route '/api/roles/{id}'
+ */
+show.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { id: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    id: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        id: args.id,
+                }
+
+    return show.definition.url
+            .replace('{id}', parsedArgs.id.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\RolController::show
+ * @see app/Http/Controllers/RolController.php:31
+ * @route '/api/roles/{id}'
+ */
+show.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: show.url(args, options),
+    method: 'get',
+})
+/**
+* @see \App\Http\Controllers\RolController::show
+ * @see app/Http/Controllers/RolController.php:31
+ * @route '/api/roles/{id}'
+ */
+show.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: show.url(args, options),
+    method: 'head',
+})
+
+    /**
+* @see \App\Http\Controllers\RolController::show
+ * @see app/Http/Controllers/RolController.php:31
+ * @route '/api/roles/{id}'
+ */
+    const showForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: show.url(args, options),
+        method: 'get',
+    })
+
+            /**
+* @see \App\Http\Controllers\RolController::show
+ * @see app/Http/Controllers/RolController.php:31
+ * @route '/api/roles/{id}'
+ */
+        showForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, options),
+            method: 'get',
+        })
+            /**
+* @see \App\Http\Controllers\RolController::show
+ * @see app/Http/Controllers/RolController.php:31
+ * @route '/api/roles/{id}'
+ */
+        showForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    show.form = showForm
+/**
+* @see \App\Http\Controllers\RolController::store
+ * @see app/Http/Controllers/RolController.php:51
+ * @route '/api/roles'
+ */
+export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+store.definition = {
+    methods: ["post"],
+    url: '/api/roles',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\RolController::store
+ * @see app/Http/Controllers/RolController.php:51
+ * @route '/api/roles'
+ */
+store.url = (options?: RouteQueryOptions) => {
+    return store.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\RolController::store
+ * @see app/Http/Controllers/RolController.php:51
+ * @route '/api/roles'
+ */
+store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: store.url(options),
+    method: 'post',
+})
+
+    /**
+* @see \App\Http\Controllers\RolController::store
+ * @see app/Http/Controllers/RolController.php:51
+ * @route '/api/roles'
+ */
+    const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: store.url(options),
+        method: 'post',
+    })
+
+            /**
+* @see \App\Http\Controllers\RolController::store
+ * @see app/Http/Controllers/RolController.php:51
+ * @route '/api/roles'
+ */
+        storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: store.url(options),
+            method: 'post',
+        })
+    
+    store.form = storeForm
+/**
+* @see \App\Http\Controllers\RolController::update
+ * @see app/Http/Controllers/RolController.php:96
+ * @route '/api/roles/{id}'
+ */
+export const update = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update.url(args, options),
+    method: 'put',
+})
+
+update.definition = {
+    methods: ["put"],
+    url: '/api/roles/{id}',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \App\Http\Controllers\RolController::update
+ * @see app/Http/Controllers/RolController.php:96
+ * @route '/api/roles/{id}'
+ */
+update.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { id: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    id: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        id: args.id,
+                }
+
+    return update.definition.url
+            .replace('{id}', parsedArgs.id.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\RolController::update
+ * @see app/Http/Controllers/RolController.php:96
+ * @route '/api/roles/{id}'
+ */
+update.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: update.url(args, options),
+    method: 'put',
+})
+
+    /**
+* @see \App\Http\Controllers\RolController::update
+ * @see app/Http/Controllers/RolController.php:96
+ * @route '/api/roles/{id}'
+ */
+    const updateForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: update.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'PUT',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
+
+            /**
+* @see \App\Http\Controllers\RolController::update
+ * @see app/Http/Controllers/RolController.php:96
+ * @route '/api/roles/{id}'
+ */
+        updateForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PUT',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    update.form = updateForm
+/**
+* @see \App\Http\Controllers\RolPermisoController::sincronizarPermisos
+ * @see app/Http/Controllers/RolPermisoController.php:31
+ * @route '/api/roles/{id}/permisos'
+ */
+export const sincronizarPermisos = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: sincronizarPermisos.url(args, options),
+    method: 'put',
+})
+
+sincronizarPermisos.definition = {
+    methods: ["put"],
+    url: '/api/roles/{id}/permisos',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \App\Http\Controllers\RolPermisoController::sincronizarPermisos
+ * @see app/Http/Controllers/RolPermisoController.php:31
+ * @route '/api/roles/{id}/permisos'
+ */
+sincronizarPermisos.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { id: args }
+    }
+
+    
+    if (Array.isArray(args)) {
+        args = {
+                    id: args[0],
+                }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+                        id: args.id,
+                }
+
+    return sincronizarPermisos.definition.url
+            .replace('{id}', parsedArgs.id.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\RolPermisoController::sincronizarPermisos
+ * @see app/Http/Controllers/RolPermisoController.php:31
+ * @route '/api/roles/{id}/permisos'
+ */
+sincronizarPermisos.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: sincronizarPermisos.url(args, options),
+    method: 'put',
+})
+
+    /**
+* @see \App\Http\Controllers\RolPermisoController::sincronizarPermisos
+ * @see app/Http/Controllers/RolPermisoController.php:31
+ * @route '/api/roles/{id}/permisos'
+ */
+    const sincronizarPermisosForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: sincronizarPermisos.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'PUT',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
+
+            /**
+* @see \App\Http\Controllers\RolPermisoController::sincronizarPermisos
+ * @see app/Http/Controllers/RolPermisoController.php:31
+ * @route '/api/roles/{id}/permisos'
+ */
+        sincronizarPermisosForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: sincronizarPermisos.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PUT',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    sincronizarPermisos.form = sincronizarPermisosForm
+const roles = {
+    index: Object.assign(index, index),
+permisos: Object.assign(permisos, permisosA27c5c),
+show: Object.assign(show, show),
+store: Object.assign(store, store),
+update: Object.assign(update, update),
+sincronizarPermisos: Object.assign(sincronizarPermisos, sincronizarPermisos),
+}
+
+export default roles

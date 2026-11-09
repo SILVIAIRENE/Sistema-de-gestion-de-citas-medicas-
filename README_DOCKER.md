@@ -1,90 +1,55 @@
-# Despliegue con Docker — Clínica Vida Salud
+# Despliegue con Docker — Clínica Vida Salud (Frontend + Backend + Base de Datos)
 
-Este proyecto está completamente configurado para levantarse en cualquier entorno (Windows, Linux, macOS o servidor en la nube) con un solo comando utilizando Docker y Docker Compose.
+Este proyecto está completamente empaquetado para levantarse en cualquier entorno (Windows, Linux, macOS o servidor en la nube) con un solo comando utilizando Docker y Docker Compose, sin errores al clonar desde Git.
 
 ---
 
-## Servicios incluidos en Docker
+## Servicios incluidos en Docker (`docker-compose.yml`)
 
-1. **`vidasalud-web` (Nginx:alpine):**
-   - Servidor web HTTP en el puerto `8002`.
-   - Proxy FastCGI optimizado para Laravel.
-2. **`vidasalud-app` (PHP 8.3 FPM Alpine):**
+1. **`vidasalud-web` (`nginx:alpine`):**
+   - Servidor web HTTP en el puerto `8002` (`http://localhost:8002`).
+   - Sirve el Frontend (`Frontend/nueva_interfaces/index.html` y `public/build`) y conecta por FastCGI con el Backend de Laravel.
+2. **`vidasalud-app` (`PHP 8.3 FPM Alpine` + Node/NPM + PostgreSQL Client):**
    - PHP 8.3 con extensiones completas: `pdo_pgsql`, `pgsql`, `intl`, `zip`, `bcmath`, `gd`, `opcache`.
-   - Composer 2.8 integrado.
-   - Script de entrada (`entrypoint.sh`) que configura permisos y variables de entorno automáticamente.
-3. **`vidasalud-db` (PostgreSQL 16 Alpine):**
+   - Dependencias de Composer y assets de Frontend pre-empaquetados en la imagen (`/opt/vendor_backup` y `/opt/build_backup`) para restaurarse automáticamente al clonar el repositorio con `git clone`.
+   - Script de entrada (`docker/entrypoint.sh`) con saltos de línea LF garantizados que configura `.env`, permisos y sincroniza la base de datos automáticamente.
+3. **`vidasalud-db` (`postgres:16-alpine`):**
    - Base de datos: `Clinica_Vida_Salud`
-   - Puerto: `5432`
+   - Puerto local mapeado: `5433` (interno `5432`)
    - Usuario: `postgres` / Contraseña: `belen0506`
-   - Esquema inicializado automáticamente: `vida_salud` con todas las 21 tablas, triggers y datos de prueba.
+   - Inicializada automáticamente desde `docker/postgres/init/01_schema.sql` y `database/clinica_vida_salud_dump.sql` con las 34 tablas del esquema `vida_salud`, triggers, procedimientos almacenados, más de 60 pacientes, médicos, horarios, citas, pagos y bitácora.
 
 ---
 
-## Requisitos previos
+## Cómo clonar e iniciar el proyecto desde Git
 
-- Tener instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows/Mac) o [Docker Engine + Docker Compose](https://docs.docker.com/engine/install/) (Linux).
-
----
-
-## Cómo iniciar el proyecto
-
-1. **Clonar o ubicarse en la carpeta del proyecto:**
+1. **Clonar la rama `prueba` del repositorio:**
    ```bash
-   cd citamedicaclinicavidasalud/citamedicaclinicavidasalud
+   git clone -b prueba https://github.com/SILVIAIRENE/Sistema-de-gestion-de-citas-medicas-.git
+   cd Sistema-de-gestion-de-citas-medicas-
    ```
 
-2. **Iniciar los contenedores:**
+2. **Construir e iniciar los contenedores (Frontend + Backend + Base de Datos):**
    ```bash
    docker compose up -d --build
    ```
 
 3. **Abrir la aplicación en el navegador:**
-   - **Página de Inicio / Login:**  
-     [http://localhost:8002/Frontend/stitch/html/P1%20Seguridad%20y%20Autenticaci%C3%B3n/cu01-iniciar-sesion.html](http://localhost:8002/Frontend/stitch/html/P1%20Seguridad%20y%20Autenticaci%C3%B3n/cu01-iniciar-sesion.html)
-   - **Dashboard Principal:**  
-     [http://localhost:8002/Frontend/stitch/html/inicio.html](http://localhost:8002/Frontend/stitch/html/inicio.html)
-   - **Bitácora de Auditoría en Vivo:**  
-     [http://localhost:8002/Frontend/stitch/html/P3%20Auditor%C3%ADa,%20Trazabilidad%20y%20Bit%C3%A1cora/cu11-bitacora.html](http://localhost:8002/Frontend/stitch/html/P3%20Auditor%C3%ADa,%20Trazabilidad%20y%20Bit%C3%A1cora/cu11-bitacora.html)
+   - **Acceso Directo Principal (Login / Panel Completo):**  
+     [http://localhost:8002](http://localhost:8002)
+   - **Ruta Directa Frontend:**  
+     [http://localhost:8002/Frontend/nueva_interfaces/index.html](http://localhost:8002/Frontend/nueva_interfaces/index.html)
 
 ---
 
-## Credenciales de Acceso
+## Credenciales de Acceso por Rol
 
 | Rol | Usuario | Contraseña |
 |---|---|---|
+| **Administrador** | `rrivero` | `Admin123*` |
 | **Administradora** | `scolque` | `Admin123*` |
 | **Recepcionista** | `rvaca` | `Admin123*` |
 | **Recepcionista** | `csuarez` | `Admin123*` |
-| **Médico General** | `jrojas` | `Admin123*` |
+| **Médico Especialista** | `jrojas` | `Admin123*` |
 
----
 
-## Comandos útiles
-
-- **Ver el estado de los contenedores:**
-  ```bash
-  docker compose ps
-  ```
-
-- **Ver los logs en tiempo real:**
-  ```bash
-  docker compose logs -f
-  ```
-
-- **Ejecutar comandos Artisan de Laravel:**
-  ```bash
-  docker compose exec app php artisan route:list
-  docker compose exec app php artisan test
-  ```
-
-- **Detener los contenedores:**
-  ```bash
-  docker compose down
-  ```
-
-- **Detener y reiniciar desde cero borrando los datos de la base de datos:**
-  ```bash
-  docker compose down -v
-  docker compose up -d --build
-  ```
